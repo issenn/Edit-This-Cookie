@@ -320,6 +320,7 @@ function importCookies() {
         for (var i = 0; i < cookieArray.length; i++) {
             try {
                 var cJSON = cookieArray[i];
+                while(cJSON.domain.substring(0,1) === '.'){cJSON.domain = cJSON.domain.substr(1);}
                 var cookie = cookieForCreationFromFullCookie(cJSON);
                 chrome.cookies.set(cookie);
                 nCookiesImportedThisTime++;
